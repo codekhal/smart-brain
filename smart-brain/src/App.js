@@ -9,7 +9,7 @@
   import './App.css';
 
   const app = new Clarifai.App({
-    apiKey: 'c850023b47bf46519a8920cf52fe886d'
+    apiKey: 'c850023b47bf46519a8920cf52fe886d'       //We have to add our own API Key we get after signing into Clarifai
    });
 
   const particleOptions = {
@@ -84,7 +84,7 @@
       console.log(response);
     },
     function(err) {
-      // there was an error
+
     }
     );
   }
