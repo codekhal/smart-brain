@@ -11,7 +11,7 @@
   import './App.css';
 
   const app = new Clarifai.App({
-    apiKey: 'c850023b47bf46519a8920cf52fe886d'       //We have to add our own API Key we get after signing into Clarifai
+    apiKey: 'c850023b47bf46519a8920cf52fe886d'       //One have to add their own API Key which they could get after signing into Clarifai
    });
 
   const particleOptions = {
@@ -72,7 +72,8 @@
         input: '',
         imageUrl: '',
         box: {},
-        route: 'signin'
+        route: 'signin',
+        isSignedIn: false
       }
     }
 
@@ -98,7 +99,7 @@
   }
 
   onButtonSubmit = () => {
-    this.setState( {imageUrl: this.state.input} )
+    this.setState({imageUrl: this.state.input});
     
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
@@ -107,7 +108,15 @@
   }
 
   onRouteChange = (route) => {
-    this.setState( {route: route} )
+    if(route === 'signout')
+    {
+      this.setState({isSignedIn: 'false'})
+    }
+    else if(route === 'home')
+    {
+      this.setState({isSignedIn: 'true'})
+    }
+    this.setState({route: route});
   }
   render() {
   return (
@@ -115,7 +124,7 @@
           <Particles className = 'particles'
             params={ particleOptions } 
           />
-        <Navigation onRouteChange = {this.onRouteChange} />
+        <Navigation isSignedIn = {this.state.isSignedIn} onRouteChange = {this.onRouteChange} />
         { this.state.route === 'home'
           ?<div>
             <Logo />
@@ -139,3 +148,9 @@
   }
 
   export default App;
+
+//**  {
+//   You may try one of these Face Samples:
+//      https://images.summitmedia-digital.com/cosmo/images/2017/11/10/5-best-things-about-having-a-round-face-main2-1510299634.jpg
+//      http://dreamicus.com/data/face/face-04.jpg
+// }**/
