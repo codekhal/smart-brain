@@ -17,16 +17,16 @@
   const particleOptions = {
     "particles": {
       "number": {
-          "value": 250,
+          "value": 270,
           "density": {  
               "enable": false
           }
       },
       "size": {
-          "value": 3,
+          "value": 4,
           "random": true,
           "anim": {
-              "speed": 4,
+              "speed": 5,
               "size_min": 0.5
           }
       },
